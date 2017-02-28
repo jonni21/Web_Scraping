@@ -11,4 +11,6 @@ header = {'user-agent': ua.chrome, 'Accept-Language': ACCEPT_LANGUAGE}
 
 response = requests.get(URL, headers=header)
 soup = BeautifulSoup(response.content, 'lxml')
-print(soup.prettify())
+
+for link in soup.find_all("a", class_="buyer-card"):
+    print(link.get("href"))
